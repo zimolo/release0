@@ -1,0 +1,106 @@
+<nav id="dashhead" class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Zimolo</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/thumbnail">Thumbnail</a></li>
+        <li><a href="/dash">Dash</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="align: right">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+	
+</div>
+</div>
+</nav>
+
+<div class="container" style="margin-left: auto; margin-right: auto; width: 95%; background-color: white;">
+
+<div id="stream" class="row" style="padding-top: 50px;">
+
+
+  <div id="greetings" class="col-md-3">
+    <div class="row" style="height: 150px;">
+    <p>welcome</p>
+    </div>
+
+    <div class="row" style="height: 30px;">
+    <ul class="nav nav-tabs nav-justified" role="tablist" style="height: 30px;">
+
+      <li class="active"><a href="#">
+        <div class="glyphicon glyphicon-star"></div>
+        <div>Home</div>
+      </a></li>
+
+      <li><a href="#">
+        <div class="glyphicon glyphicon-star"></div>
+        <div>Home</div>
+      </a></li>
+
+      <li><a href="#">
+        <div class="glyphicon glyphicon-star"></div>
+        <div>Home</div>
+      </a></li>
+
+      <li><a href="#">
+        <div class="glyphicon glyphicon-star"></div>
+        <div>Home</div>
+      </a></li>
+    </ul>
+    </div>
+  </div>
+  
+
+  <div id="tiles" class="col-md-9">
+    <div class="well" style="height: 180px;">
+      <div class="carousel slide">
+        <div class="carousel-inner">
+          <div class="item active">
+            <div class="row">
+              <div class="col-sm-3"><a href="#"><img src="/img/icons/greenicon.gif" alt="image1" class="img-responsive"></a></div>
+              <div class="col-sm-3"><a href="#"><img src="/img/icons/greenicon.gif" alt="image1" class="img-responsive"></a></div>
+              <div class="col-sm-3"><a href="#"><img src="/img/icons/greenicon.gif" alt="image1" class="img-responsive"></a></div>
+              <div class="col-sm-3"><a href="#"><img src="/img/icons/greenicon.gif" alt="image1" class="img-responsive"></a></div>
+            </div>
+          </div>
+        </div>
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev"> -- </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="prev"> -- </a>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+  </table>
+</div>
+
+</div>
