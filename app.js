@@ -1,10 +1,43 @@
 var express = require('express');
 
-var app = express();
-
 var hdb = require('express3-handlebars').create({ defaultLayout: 'main' });
 
-var kicks = require('./lib/kicks.js');
+var mongoose = require('mongoose');
+
+var user=require('./libs/user.js');
+
+var pageroute=require('./controllers/pageController.js');
+
+var authroute=require('./controllers/authentication.js');
+
+
+// Configuring Passport
+var passport = require('passport');
+
+var initPassport = require('./libs/passport/init');
+
+initPassport(passport);
+//end configuring passport
+
+//setup express
+var app = express();
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.raw());
+app.use(bodyParser.text());
+app.use(bodyParser.json());
+var expressSession = require('express-session');
+
+app.use(expressSession({secret: 'mySecretKey'}));
+
+app.use(passport.initialize());
+
+app.use(passport.session());
+
+var flash = require('connect-flash');
+
+app.use(flash());
 
 app.engine('hdb', hdb.engine);
 
@@ -12,30 +45,16 @@ app.set('view engine', 'hdb');
 
 app.set('port', process.env.PORT || 8080);
 
+//setup mongodb
+mongoose.connect('mongodb://localhost/zimolodb');
+
 app.use(express.static(__dirname + '/public'));
 
-app.get('/', function(req, res){
-	res.render('home');
-});
+app.use('/auth',authroute(passport));
 
-app.get('/signup', function(req, res){
-	res.render('signUp');
-});
+app.use('/',pageroute(passport));
 
-app.get('/thumbnail', function(req, res){
-	res.render('thumbnail');
-});
 
-app.get('/dash', function(req, res){
-	res.render('dash');
-});
-
-app.get('/forget', function(req, res){
-	res.render('forgetPassword');
-});
-app.get('/about', function(req, res){
-	res.render('about', { kicks: kicks.getKicks() });
-});
 
 app.use(function(req, res, next){
 	res.status(404);
