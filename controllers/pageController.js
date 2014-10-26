@@ -19,6 +19,10 @@ module.exports = function(passport) {
         res.render('signUp',{message: req.flash('message')});
     });
 
+    router.get('/test', util.isAuthenticated,function(req, res){
+        res.render('test');
+    });
+
     router.get('/thumbnail', util.isAuthenticated,function (req, res) {
         res.render('thumbnail');
     });
