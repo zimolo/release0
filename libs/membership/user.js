@@ -13,4 +13,9 @@ var schem = new Schema({
     lastname: String,
     email: String,
     psw: String},{collection:'user'});
+
+schem.methods.passwordMatch=function(password){
+    //TODO: add encryption logics in here
+    return this.psw==password;
+}
 module.exports=mongoose.model('user',schem);

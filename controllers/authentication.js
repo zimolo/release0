@@ -15,6 +15,12 @@ module.exports=function(passport) {
         })
     );
 
+    router.post('/register',
+        passport.authenticate('registerstrategy', {
+            successRedirect: '/dash',
+            failureRedirect: '/signup',
+            failureFlash : true
+        }));
     router.get('/logout',function(req, res){
             req.logout();
             res.redirect('/');

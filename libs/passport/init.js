@@ -2,7 +2,8 @@
  * Created by tyler on 10/25/2014.
  */
 var login = require('./login');
-var User = require('../user');
+var register=require('./register');
+var User = require('../membership/user');
 
 module.exports = function(passport){
 
@@ -21,6 +22,6 @@ module.exports = function(passport){
 
     // Setting up Passport Strategies for Login and SignUp/Registration
     login(passport);
-   // signup(passport);
+    register(passport);
 
 }

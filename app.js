@@ -4,7 +4,7 @@ var hdb = require('express3-handlebars').create({ defaultLayout: 'main' });
 
 var mongoose = require('mongoose');
 
-var user=require('./libs/user.js');
+var user=require('./libs/membership/user.js');
 
 var pageroute=require('./controllers/pageController.js');
 
@@ -38,6 +38,8 @@ app.use(passport.session());
 var flash = require('connect-flash');
 
 app.use(flash());
+
+initPassport(passport);
 
 app.engine('hdb', hdb.engine);
 
