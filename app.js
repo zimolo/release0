@@ -22,6 +22,10 @@ app.get('/signup', function(req, res){
 	res.render('signUp');
 });
 
+app.get('/test', function(req, res){
+	res.render('test');
+});
+
 app.get('/thumbnail', function(req, res){
 	res.render('thumbnail');
 });
