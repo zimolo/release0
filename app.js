@@ -4,11 +4,11 @@ var hdb = require('express3-handlebars').create({ defaultLayout: 'main' });
 
 var mongoose = require('mongoose');
 
-var user=require('./libs/membership/user.js');
+var user=require('./libs/membership/domain/user.js');
 
-var pageroute=require('./controllers/pageController.js');
+var pageroute=require('./libs/pageController.js');
 
-var authroute=require('./controllers/authentication.js');
+var authroute=require('./libs/membership/application/authentication.js');
 
 
 // Configuring Passport

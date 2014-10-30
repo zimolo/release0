@@ -3,7 +3,7 @@
  */
 var login = require('./login');
 var register=require('./register');
-var User = require('../membership/user');
+var User = require('../membership/domain/user');
 
 module.exports = function(passport){
 

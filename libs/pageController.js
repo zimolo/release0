@@ -7,7 +7,7 @@ var router = express.Router();
 /**
  * all the routes for the page redirection
  */
-var util=require('../libs/util.js');
+var util=require('./util.js');
 
 
 module.exports = function(passport) {
