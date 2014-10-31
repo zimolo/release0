@@ -10,7 +10,10 @@ var pageroute=require('./libs/pageController.js');
 
 var authroute=require('./libs/membership/application/authentication.js');
 
+var userroute=require('./libs/membership/application/usercontroller.js');
 
+var bootstraper=require('./libs/cqrs/DDD_Bootstraper.js');
+bootstraper.bootstrap();
 // Configuring Passport
 var passport = require('passport');
 
@@ -53,7 +56,7 @@ mongoose.connect('mongodb://localhost/zimolodb');
 app.use(express.static(__dirname + '/public'));
 
 app.use('/auth',authroute(passport));
-
+app.use('/user',userroute(passport));
 app.use('/',pageroute(passport));
 
 
@@ -72,5 +75,6 @@ app.use(function(err, req, res, next){
 app.listen(app.get('port'), function(){
 	console.log('Zimolo started on localhost:' + app.get('port') + '...');
 })
+
 
 

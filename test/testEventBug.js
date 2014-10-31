@@ -24,28 +24,35 @@ util.inherits(Product, baseAggrRoot);
 
 //===============MOCK domain event
 var productAddedEvent=new domainEvent('productAddedEvent','productadded');
+var productDelEvent=new domainEvent('productDeledEvent','productdeled');
 
 //==============MOCK product eventHandler
-var ProductEventHandler=function(events){
+//==========definition
+var ProductEventHandler=function(){
     this.message='dummy message';
-    baseAggrRoot.call(this,'producteventhandler',events);
+    ProductEventHandler.super_.call(this,'producteventhandler',['productAddedEvent','productDeledEvent']);
 };
 util.inherits(ProductEventHandler,baseEventHandler);
 ProductEventHandler.prototype.H_productAddedEvent=function(data){
     this.message=data;
+    assert.equal(this.message,'productadded');
 }
-
+ProductEventHandler.prototype.H_productDeledEvent=function(data){
+    this.message=data;
+    assert.equal(this.message,'productdeled');
+}
 util.inherits(Product, baseAggrRoot);
+//=========init
+productEventHandler=new ProductEventHandler();
 
-productEventHandler=new ProductEventHandler(['productAddedEvent']);
-
+EventBus.registerEventHandler(productEventHandler);
 
 
 
 
 //==============test cases
 
-describe('Creating a obj',function(){
+describe('test event bus',function(){
     var obj;
 
     before(function(done){
@@ -58,12 +65,16 @@ describe('Creating a obj',function(){
     it('test productAddedEvent should be created correctly',function(){
         assert.equal(productAddedEvent.name, 'productAddedEvent');
     });
-    it('test register eventhandler successfully',function(){
-        EventBus.registerEventHandler(productEventHandler);
+    it('test publish product add event successfully',function(){
+
         EventBus.publish(productAddedEvent);
 
-        assert.equal(productEventHandler.message, 'productadded');
+    });
+    it('test publish product del event successfully',function(){
+
+
+        EventBus.publish(productDelEvent);
+
     });
 });
- 
- 
+

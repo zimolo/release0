@@ -4,24 +4,24 @@
  */
 
 var eventBus = (function() {
-	var _this = {},
-		_eventHandlers = [];
+    var _this = {},
+        _eventHandlers = [];
 
-	_this.registerEventHandler = function(eventHandler) {
-		_eventHandlers.push(eventHandler);
-	};
+    _this.registerEventHandler = function(eventHandler) {
+        _eventHandlers.push(eventHandler);
+    };
 
-	_this.publish = function(domainEvent) {
-		_eventHandlers.forEach(function(eventHandler) {
-			if(eventHandler.canHandle(domainEvent)){
-				process.nextTick(function() {
-					eventHandler.handle(domainEvent);	
-				});
-			}
-		});
-	};
+    _this.publish = function(domainEvent) {
+        _eventHandlers.forEach(function(eventHandler) {
+            if(eventHandler.canHandle(domainEvent)){
+                process.nextTick(function() {
+                    eventHandler.handle(domainEvent);
+                });
+            }
+        });
+    };
 
-	return _this;
+    return _this;
 })();
 
 module.exports = eventBus;
