@@ -29,7 +29,7 @@ module.exports=function(passport) {
             if(err)
                 res.send(err);
             else
-                res.json(users);
+                res.json(req.user);
         });
     });
     return router;

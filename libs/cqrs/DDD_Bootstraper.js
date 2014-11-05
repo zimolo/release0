@@ -7,19 +7,25 @@
 
 var Gate = require('./DomainGate.js');
 var EventBus = require('./EventBus.js');
+var config = require('./DDD_Bootstraper_config.js');
 
-/**
- * init command handlers
- */
 module.exports.bootstrap=function(){
-    require('../membership/domain/CommandHandlers.js').forEach(
-        function(handler){
-            Gate.registerCommandHandler(new handler());
+    config.forEach(
+        function(entry){
+            require(entry.CommandHandler).forEach(
+                function(handler){
+                    Gate.registerCommandHandler(new handler());
+                }
+            );
+
+
         }
+
     );
+
 
 }
 
 /*
-    init event handlers
+ init event handlers
  */

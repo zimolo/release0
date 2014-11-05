@@ -19,6 +19,7 @@ var passport = require('passport');
 
 var initPassport = require('./libs/passport/init');
 
+
 initPassport(passport);
 //end configuring passport
 
@@ -31,8 +32,13 @@ app.use(bodyParser.raw());
 app.use(bodyParser.text());
 app.use(bodyParser.json());
 var expressSession = require('express-session');
+var MongoStore = require('connect-mongo')(expressSession);
 
-app.use(expressSession({secret: 'mySecretKey'}));
+app.use(expressSession({secret: 'zimolo',
+                        store: new MongoStore({
+                                    url: 'mongodb://localhost/zimolodb_ses'
+                                })
+                        }));
 
 app.use(passport.initialize());
 

@@ -1,21 +1,23 @@
 {
-    "name": "zimolo",
-    "version": "0.0.1",
-    "description": "zimolo starts here...",
-    "main": "app.js",
-    "scripts": {
-        "test": "./node_modules/.bin/mocha test"
-    },
-    "author": "narasace <narasace@gmail.com> (http://www.zimolo.com/)",
-    "license": "ISC",
-    "dependencies": {
-        "body-parser": "^1.9.2",
-        "connect-flash": "^0.1.1",
-        "express-session": "^1.9.1",
-        "express3-handlebars": "~0.5.2",
-        "mocha": "^2.0.1",
-        "mongoose": "^3.8.18",
-        "passport": "^0.2.1",
-        "passport-local": "^1.0.0"
-    }
+  "name": "zimolo",
+  "version": "0.0.1",
+  "description": "zimolo starts here...",
+  "main": "app.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha test"
+  },
+  "author": "narasace <narasace@gmail.com> (http://www.zimolo.com/)",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.9.2",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^0.4.1",
+    "express": "^4.10.1",
+    "express-session": "^1.9.1",
+    "express3-handlebars": "~0.5.2",
+    "mocha": "^2.0.1",
+    "mongoose": "^3.8.18",
+    "passport": "^0.2.1",
+    "passport-local": "^1.0.0"
+  }
 }
