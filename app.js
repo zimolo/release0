@@ -1,3 +1,6 @@
+/*
+* authentication server
+* */
 var express = require('express');
 
 var hdb = require('express3-handlebars').create({ defaultLayout: 'main' });
