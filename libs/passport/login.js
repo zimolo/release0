@@ -2,7 +2,7 @@
  * Created by tyler on 10/25/2014.
  */
 var LocalStrategy   = require('passport-local').Strategy;
-var Repository = require('../membership/membership_repository.js');
+var Repository = require('../membership/infrastracture/membership_repository.js');
 
 module.exports = function(passport){
 

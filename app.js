@@ -1,20 +1,27 @@
+/*
+* authentication server
+* */
 var express = require('express');
 
 var hdb = require('express3-handlebars').create({ defaultLayout: 'main' });
 
 var mongoose = require('mongoose');
 
-var user=require('./libs/membership/user.js');
+var user=require('./libs/membership/domain/user.js');
 
-var pageroute=require('./controllers/pageController.js');
+var pageroute=require('./libs/pageController.js');
 
-var authroute=require('./controllers/authentication.js');
+var authroute=require('./libs/membership/application/authentication.js');
 
+var userroute=require('./libs/membership/application/usercontroller.js');
 
+var bootstraper=require('./libs/cqrs/DDD_Bootstraper.js');
+bootstraper.bootstrap();
 // Configuring Passport
 var passport = require('passport');
 
 var initPassport = require('./libs/passport/init');
+
 
 initPassport(passport);
 //end configuring passport
@@ -28,8 +35,14 @@ app.use(bodyParser.raw());
 app.use(bodyParser.text());
 app.use(bodyParser.json());
 var expressSession = require('express-session');
+var MongoStore = require('connect-mongo')(expressSession);
 
-app.use(expressSession({secret: 'mySecretKey'}));
+app.use(expressSession({secret: 'zimolo',
+                        cookie:{maxAge:60*60*1000},
+                        store: new MongoStore({
+                                    url: 'mongodb://localhost/zimolodb_ses'
+                                })
+                        }));
 
 app.use(passport.initialize());
 
@@ -53,7 +66,7 @@ mongoose.connect('mongodb://localhost/zimolodb');
 app.use(express.static(__dirname + '/public'));
 
 app.use('/auth',authroute(passport));
-
+app.use('/user',userroute(passport));
 app.use('/',pageroute(passport));
 
 
@@ -72,5 +85,6 @@ app.use(function(err, req, res, next){
 app.listen(app.get('port'), function(){
 	console.log('Zimolo started on localhost:' + app.get('port') + '...');
 })
+
 
 
