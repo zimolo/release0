@@ -38,6 +38,7 @@ var expressSession = require('express-session');
 var MongoStore = require('connect-mongo')(expressSession);
 
 app.use(expressSession({secret: 'zimolo',
+                        cookie:{maxAge:60*60*1000},
                         store: new MongoStore({
                                     url: 'mongodb://localhost/zimolodb_ses'
                                 })
